@@ -9,20 +9,27 @@
 /* Begin PBXBuildFile section */
 		4E3E8E2329EEFED400D1F87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2229EEFED400D1F87A /* AppDelegate.swift */; };
 		4E3E8E2529EEFED400D1F87A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2429EEFED400D1F87A /* SceneDelegate.swift */; };
-		4E3E8E2729EEFED400D1F87A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2629EEFED400D1F87A /* ViewController.swift */; };
+		4E3E8E2729EEFED400D1F87A /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2629EEFED400D1F87A /* ListViewController.swift */; };
 		4E3E8E2A29EEFED400D1F87A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2829EEFED400D1F87A /* Main.storyboard */; };
 		4E3E8E2D29EEFED400D1F87A /* CoinWatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2B29EEFED400D1F87A /* CoinWatch.xcdatamodeld */; };
 		4E3E8E2F29EEFED500D1F87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2E29EEFED500D1F87A /* Assets.xcassets */; };
 		4E3E8E3229EEFED500D1F87A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E8E3029EEFED500D1F87A /* LaunchScreen.storyboard */; };
 		4E3E8E4329EF053300D1F87A /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E4229EF053300D1F87A /* ListViewModel.swift */; };
 		4E3E8E4629EF057500D1F87A /* ListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E4529EF057500D1F87A /* ListProtocols.swift */; };
+		4E9711B829EF203400BE9727 /* SectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711B729EF203400BE9727 /* SectionType.swift */; };
+		4E9711BB29EF26D900BE9727 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711BA29EF26D900BE9727 /* Constants.swift */; };
+		4E9711BE29EFDDA100BE9727 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E9711BD29EFDDA100BE9727 /* Alamofire */; };
+		4E9711C129EFEBCA00BE9727 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711C029EFEBCA00BE9727 /* NetworkManager.swift */; };
+		4E9711C429EFECEE00BE9727 /* APIMethodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711C329EFECED00BE9727 /* APIMethodProtocol.swift */; };
+		4E9711C629EFFF0400BE9727 /* ListViewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711C529EFFF0400BE9727 /* ListViewDataProvider.swift */; };
+		4E9711C829F011FB00BE9727 /* PairList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711C729F011FB00BE9727 /* PairList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E3E8E1F29EEFED400D1F87A /* CoinWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E3E8E2229EEFED400D1F87A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E3E8E2429EEFED400D1F87A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4E3E8E2629EEFED400D1F87A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4E3E8E2629EEFED400D1F87A /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4E3E8E2929EEFED400D1F87A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E3E8E2C29EEFED400D1F87A /* CoinWatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoinWatch.xcdatamodel; sourceTree = "<group>"; };
 		4E3E8E2E29EEFED500D1F87A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,6 +37,12 @@
 		4E3E8E3329EEFED500D1F87A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E3E8E4229EF053300D1F87A /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		4E3E8E4529EF057500D1F87A /* ListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProtocols.swift; sourceTree = "<group>"; };
+		4E9711B729EF203400BE9727 /* SectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionType.swift; sourceTree = "<group>"; };
+		4E9711BA29EF26D900BE9727 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4E9711C029EFEBCA00BE9727 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4E9711C329EFECED00BE9727 /* APIMethodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMethodProtocol.swift; sourceTree = "<group>"; };
+		4E9711C529EFFF0400BE9727 /* ListViewDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDataProvider.swift; sourceTree = "<group>"; };
+		4E9711C729F011FB00BE9727 /* PairList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E9711BE29EFDDA100BE9727 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,10 +76,10 @@
 		4E3E8E2129EEFED400D1F87A /* CoinWatch */ = {
 			isa = PBXGroup;
 			children = (
+				4E9711B929EF26C800BE9727 /* Helpers */,
 				4E3E8E3929EF049800D1F87A /* Screens */,
 				4E3E8E2229EEFED400D1F87A /* AppDelegate.swift */,
 				4E3E8E2429EEFED400D1F87A /* SceneDelegate.swift */,
-				4E3E8E2629EEFED400D1F87A /* ViewController.swift */,
 				4E3E8E2829EEFED400D1F87A /* Main.storyboard */,
 				4E3E8E2E29EEFED500D1F87A /* Assets.xcassets */,
 				4E3E8E3029EEFED500D1F87A /* LaunchScreen.storyboard */,
@@ -78,6 +92,7 @@
 		4E3E8E3929EF049800D1F87A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4E9711BF29EFEBBE00BE9727 /* General */,
 				4E3E8E3B29EF04AA00D1F87A /* Detail */,
 				4E3E8E3A29EF04A500D1F87A /* List */,
 			);
@@ -108,6 +123,8 @@
 		4E3E8E3C29EF04C700D1F87A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E9711B729EF203400BE9727 /* SectionType.swift */,
+				4E9711C729F011FB00BE9727 /* PairList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -116,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				4E3E8E4229EF053300D1F87A /* ListViewModel.swift */,
+				4E9711C529EFFF0400BE9727 /* ListViewDataProvider.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -123,6 +141,7 @@
 		4E3E8E3E29EF04D800D1F87A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E3E8E2629EEFED400D1F87A /* ListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,6 +175,31 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		4E9711B929EF26C800BE9727 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4E9711BA29EF26D900BE9727 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4E9711BF29EFEBBE00BE9727 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				4E9711C229EFECD800BE9727 /* Protocols */,
+				4E9711C029EFEBCA00BE9727 /* NetworkManager.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		4E9711C229EFECD800BE9727 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4E9711C329EFECED00BE9727 /* APIMethodProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,6 +216,9 @@
 			dependencies = (
 			);
 			name = CoinWatch;
+			packageProductDependencies = (
+				4E9711BD29EFDDA100BE9727 /* Alamofire */,
+			);
 			productName = CoinWatch;
 			productReference = 4E3E8E1F29EEFED400D1F87A /* CoinWatch.app */;
 			productType = "com.apple.product-type.application";
@@ -200,6 +247,9 @@
 				Base,
 			);
 			mainGroup = 4E3E8E1629EEFED400D1F87A;
+			packageReferences = (
+				4E9711BC29EFDDA100BE9727 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 4E3E8E2029EEFED400D1F87A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -227,12 +277,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E9711C129EFEBCA00BE9727 /* NetworkManager.swift in Sources */,
 				4E3E8E4329EF053300D1F87A /* ListViewModel.swift in Sources */,
-				4E3E8E2729EEFED400D1F87A /* ViewController.swift in Sources */,
+				4E3E8E2729EEFED400D1F87A /* ListViewController.swift in Sources */,
+				4E9711C429EFECEE00BE9727 /* APIMethodProtocol.swift in Sources */,
 				4E3E8E2329EEFED400D1F87A /* AppDelegate.swift in Sources */,
 				4E3E8E2D29EEFED400D1F87A /* CoinWatch.xcdatamodeld in Sources */,
 				4E3E8E2529EEFED400D1F87A /* SceneDelegate.swift in Sources */,
+				4E9711B829EF203400BE9727 /* SectionType.swift in Sources */,
 				4E3E8E4629EF057500D1F87A /* ListProtocols.swift in Sources */,
+				4E9711C829F011FB00BE9727 /* PairList.swift in Sources */,
+				4E9711C629EFFF0400BE9727 /* ListViewDataProvider.swift in Sources */,
+				4E9711BB29EF26D900BE9727 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +443,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -415,6 +472,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -450,6 +508,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4E9711BC29EFDDA100BE9727 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4E9711BD29EFDDA100BE9727 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E9711BC29EFDDA100BE9727 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4E3E8E2B29EEFED400D1F87A /* CoinWatch.xcdatamodeld */ = {
