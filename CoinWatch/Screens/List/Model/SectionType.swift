@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum SectionType: Int {
+enum SectionType: Int, CaseIterable {
     case favorites
     case pairs
     
@@ -23,5 +23,23 @@ enum SectionType: Int {
     var headerSize: CGSize {
         let windowWidth = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.frame.width ?? UIScreen.main.bounds.width
         return CGSize(width: windowWidth, height: 60)
+    }
+}
+
+enum ItemType {
+    case horizontal
+    case pair
+    case favorite
+    
+    var itemSize: CGSize {
+        switch self {
+        case .horizontal:
+            return .zero
+        case .pair:
+            let windowWidth = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.frame.width ?? UIScreen.main.bounds.width
+            return CGSize(width: windowWidth, height: 50)
+        case .favorite:
+            return .zero
+        }
     }
 }

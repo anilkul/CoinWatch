@@ -8,5 +8,12 @@
 import Foundation
 
 protocol ListViewModelProtocol {
+    var reloadData: VoidHandler? { get set }
     
+    func numberOfSections() -> Int
+    func numberOfItems(in section: Int) -> Int
+    func presentationObject(at indexPath: IndexPath) -> BaseCellPresentable
+    func requestPairList(_ completion: VoidHandler?)
+    func isFavoritesSectionActive() -> Bool
+    func willDisplayCell(at indexPath: IndexPath)
 }

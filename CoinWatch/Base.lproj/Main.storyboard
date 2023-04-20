@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="70a-6C-I4H">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="70a-6C-I4H">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                                 <color key="backgroundColor" name="MainBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ydf-RM-2VZ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -35,13 +35,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="MainBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="70a-6C-I4H" secondAttribute="bottom" id="7d3-GA-nW2"/>
-                            <constraint firstItem="70a-6C-I4H" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Haf-5z-dBe"/>
-                            <constraint firstItem="70a-6C-I4H" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="KD5-xn-jaR"/>
-                            <constraint firstItem="70a-6C-I4H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Yft-pN-Dpi"/>
+                            <constraint firstItem="70a-6C-I4H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8yE-si-Ud4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="70a-6C-I4H" secondAttribute="bottom" id="bA8-Re-4of"/>
+                            <constraint firstItem="70a-6C-I4H" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gIY-om-a8y"/>
+                            <constraint firstItem="70a-6C-I4H" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zKA-bW-qxW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yZt-Ev-a0R"/>
+                    <connections>
+                        <outlet property="collectionView" destination="70a-6C-I4H" id="gyD-F9-3jc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -50,9 +53,8 @@
         <!--Navigation Controller-->
         <scene sceneID="Hau-jx-TYn">
             <objects>
-                <navigationController id="1qF-f7-eg9" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="1qF-f7-eg9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="W1E-dH-KEE">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

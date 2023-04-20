@@ -23,6 +23,8 @@
 		4E9711C429EFECEE00BE9727 /* APIMethodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711C329EFECED00BE9727 /* APIMethodProtocol.swift */; };
 		4E9711C629EFFF0400BE9727 /* ListViewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711C529EFFF0400BE9727 /* ListViewDataProvider.swift */; };
 		4E9711C829F011FB00BE9727 /* PairList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711C729F011FB00BE9727 /* PairList.swift */; };
+		4E9711CB29F0358F00BE9727 /* PairListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711C929F0358F00BE9727 /* PairListCell.swift */; };
+		4E9711CC29F0358F00BE9727 /* PairListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9711CA29F0358F00BE9727 /* PairListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		4E9711C329EFECED00BE9727 /* APIMethodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMethodProtocol.swift; sourceTree = "<group>"; };
 		4E9711C529EFFF0400BE9727 /* ListViewDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDataProvider.swift; sourceTree = "<group>"; };
 		4E9711C729F011FB00BE9727 /* PairList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairList.swift; sourceTree = "<group>"; };
+		4E9711C929F0358F00BE9727 /* PairListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListCell.swift; sourceTree = "<group>"; };
+		4E9711CA29F0358F00BE9727 /* PairListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PairListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				4E3E8E2629EEFED400D1F87A /* ListViewController.swift */,
+				4E9711C929F0358F00BE9727 /* PairListCell.swift */,
+				4E9711CA29F0358F00BE9727 /* PairListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E3E8E3229EEFED500D1F87A /* LaunchScreen.storyboard in Resources */,
+				4E9711CC29F0358F00BE9727 /* PairListCell.xib in Resources */,
 				4E3E8E2F29EEFED500D1F87A /* Assets.xcassets in Resources */,
 				4E3E8E2A29EEFED400D1F87A /* Main.storyboard in Resources */,
 			);
@@ -278,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E9711C129EFEBCA00BE9727 /* NetworkManager.swift in Sources */,
+				4E9711CB29F0358F00BE9727 /* PairListCell.swift in Sources */,
 				4E3E8E4329EF053300D1F87A /* ListViewModel.swift in Sources */,
 				4E3E8E2729EEFED400D1F87A /* ListViewController.swift in Sources */,
 				4E9711C429EFECEE00BE9727 /* APIMethodProtocol.swift in Sources */,
