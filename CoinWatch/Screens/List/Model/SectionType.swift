@@ -26,7 +26,7 @@ enum SectionType: Int, CaseIterable {
     }
 }
 
-enum ItemType {
+enum ItemType: Codable {
     case horizontal
     case pair
     case favorite
@@ -34,12 +34,13 @@ enum ItemType {
     var itemSize: CGSize {
         switch self {
         case .horizontal:
-            return .zero
+            let windowWidth = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.frame.width ?? UIScreen.main.bounds.width
+            return CGSize(width: windowWidth, height: 60)
         case .pair:
             let windowWidth = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.frame.width ?? UIScreen.main.bounds.width
             return CGSize(width: windowWidth, height: 50)
         case .favorite:
-            return .zero
+            return CGSize(width: 60, height: 60)
         }
     }
 }

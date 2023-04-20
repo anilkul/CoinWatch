@@ -27,7 +27,9 @@ final class PairListCell: UICollectionViewCell {
     
     func populate(with presentationObject: PairPresentable) {
         self.presentationObject = presentationObject
-        favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+        favoriteButton.setTitle("", for: .normal)
+        let imageName = presentationObject.isFavorite ? "star.fill" : "star"
+        favoriteButton.setImage(UIImage(systemName: imageName), for: .normal)
         pairNameLabel.text = presentationObject.name
         lastLabel.text = presentationObject.last
         dailyPercentageLabel.text = presentationObject.dailyPercent

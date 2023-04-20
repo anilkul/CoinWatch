@@ -37,14 +37,15 @@ final class ListViewModel: ListViewModelProtocol {
     }
     
     private func parse(_ list: PairList) {
-        let favorites: [BaseCellPresentable] = []
-        let pairList: [BaseCellPresentable] = list.data.map {
-            let object = PairPresentationObject(pair: $0)
-            object.isFavorite = favorites.lazy.contains(where: { $0.symbol == object.symbol })
+        let favorites: [PairFavoritable] = dataProvider.fetchFavoriteList(fetchOffset: nil)
+        let favroteList: [FavoriteListPresentable] = [FavoriteListPresentationObject(type: .horizontal, favorites: favorites)]
+        let pairList: [PairPresentable] = list.data.map {
+            let object = PairPresentationObject(type: .pair, pair: $0)
+            object.isFavorite = favorites.contains(where: { $0.symbol == object.symbol })
             return object
             
         }
-        dataSource = [favorites, pairList]
+        dataSource = [favroteList, pairList]
     }
     
     func numberOfSections() -> Int {
@@ -72,7 +73,8 @@ final class ListViewModel: ListViewModelProtocol {
     }
     
     func isFavoritesSectionActive() -> Bool {
-        return !(dataSource.first?.isEmpty ?? true)
+        let favorites = (dataSource.first?.first as? FavoriteListPresentable)?.favorites
+        return !(favorites?.isEmpty ?? true)
     }
     
     func willDisplayCell(at indexPath: IndexPath) {
@@ -99,8 +101,22 @@ extension ListViewModel {
             break
             // routing
         case .favorite:
-            break
-            // set fav
+            presentationObject.isFavorite.toggle()
+            guard
+                let favoritedObject = presentationObject as? FavoritePresentationObject,
+                var favorites = dataSource[SectionType.favorites.rawValue] as? [PairFavoritable]
+            else {
+                return
+            }
+            if presentationObject.isFavorite {
+                favorites.append(favoritedObject)
+            } else {
+                favorites.removeAll(where: { $0.symbol == favoritedObject.symbol })
+            }
+            
+            dataProvider.setfavorite(presentationObject.isFavorite, favoritedObject) { [weak self] in
+                self?.reloadData?()
+            }
         }
     }
 }

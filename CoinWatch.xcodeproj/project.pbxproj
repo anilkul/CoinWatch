@@ -11,7 +11,6 @@
 		4E3E8E2529EEFED400D1F87A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2429EEFED400D1F87A /* SceneDelegate.swift */; };
 		4E3E8E2729EEFED400D1F87A /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2629EEFED400D1F87A /* ListViewController.swift */; };
 		4E3E8E2A29EEFED400D1F87A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2829EEFED400D1F87A /* Main.storyboard */; };
-		4E3E8E2D29EEFED400D1F87A /* CoinWatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2B29EEFED400D1F87A /* CoinWatch.xcdatamodeld */; };
 		4E3E8E2F29EEFED500D1F87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2E29EEFED500D1F87A /* Assets.xcassets */; };
 		4E3E8E3229EEFED500D1F87A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E8E3029EEFED500D1F87A /* LaunchScreen.storyboard */; };
 		4E3E8E4329EF053300D1F87A /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E4229EF053300D1F87A /* ListViewModel.swift */; };
@@ -27,8 +26,11 @@
 		4E9711CC29F0358F00BE9727 /* PairListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9711CA29F0358F00BE9727 /* PairListCell.xib */; };
 		4E9711CF29F1514900BE9727 /* ListViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711CD29F1514900BE9727 /* ListViewSectionHeader.swift */; };
 		4E9711D029F1514900BE9727 /* ListViewSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9711CE29F1514900BE9727 /* ListViewSectionHeader.xib */; };
-		4E9711D729F15C0300BE9727 /* FavoriteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711D529F15C0300BE9727 /* FavoriteListCell.swift */; };
-		4E9711D829F15C0300BE9727 /* FavoriteListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9711D629F15C0300BE9727 /* FavoriteListCell.xib */; };
+		4E9711D729F15C0300BE9727 /* FavoriteListHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711D529F15C0300BE9727 /* FavoriteListHorizontalCell.swift */; };
+		4E9711D829F15C0300BE9727 /* FavoriteListHorizontalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9711D629F15C0300BE9727 /* FavoriteListHorizontalCell.xib */; };
+		4E9711E029F1771900BE9727 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711DF29F1771900BE9727 /* PersistencyManager.swift */; };
+		4EB6276329F1A15400E53D03 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6276129F1A15400E53D03 /* FavoriteCell.swift */; };
+		4EB6276429F1A15400E53D03 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB6276229F1A15400E53D03 /* FavoriteCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +39,6 @@
 		4E3E8E2429EEFED400D1F87A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4E3E8E2629EEFED400D1F87A /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4E3E8E2929EEFED400D1F87A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4E3E8E2C29EEFED400D1F87A /* CoinWatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoinWatch.xcdatamodel; sourceTree = "<group>"; };
 		4E3E8E2E29EEFED500D1F87A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E3E8E3129EEFED500D1F87A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E3E8E3329EEFED500D1F87A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,8 +54,11 @@
 		4E9711CA29F0358F00BE9727 /* PairListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PairListCell.xib; sourceTree = "<group>"; };
 		4E9711CD29F1514900BE9727 /* ListViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewSectionHeader.swift; sourceTree = "<group>"; };
 		4E9711CE29F1514900BE9727 /* ListViewSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewSectionHeader.xib; sourceTree = "<group>"; };
-		4E9711D529F15C0300BE9727 /* FavoriteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListCell.swift; sourceTree = "<group>"; };
-		4E9711D629F15C0300BE9727 /* FavoriteListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteListCell.xib; sourceTree = "<group>"; };
+		4E9711D529F15C0300BE9727 /* FavoriteListHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListHorizontalCell.swift; sourceTree = "<group>"; };
+		4E9711D629F15C0300BE9727 /* FavoriteListHorizontalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteListHorizontalCell.xib; sourceTree = "<group>"; };
+		4E9711DF29F1771900BE9727 /* PersistencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
+		4EB6276129F1A15400E53D03 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		4EB6276229F1A15400E53D03 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +100,6 @@
 				4E3E8E2E29EEFED500D1F87A /* Assets.xcassets */,
 				4E3E8E3029EEFED500D1F87A /* LaunchScreen.storyboard */,
 				4E3E8E3329EEFED500D1F87A /* Info.plist */,
-				4E3E8E2B29EEFED400D1F87A /* CoinWatch.xcdatamodeld */,
 			);
 			path = CoinWatch;
 			sourceTree = "<group>";
@@ -153,13 +156,11 @@
 		4E3E8E3E29EF04D800D1F87A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E9711EB29F19C7000BE9727 /* Favorites */,
+				4E9711EA29F19C6700BE9727 /* Pairs */,
 				4E3E8E2629EEFED400D1F87A /* ListViewController.swift */,
-				4E9711C929F0358F00BE9727 /* PairListCell.swift */,
-				4E9711CA29F0358F00BE9727 /* PairListCell.xib */,
 				4E9711CD29F1514900BE9727 /* ListViewSectionHeader.swift */,
 				4E9711CE29F1514900BE9727 /* ListViewSectionHeader.xib */,
-				4E9711D529F15C0300BE9727 /* FavoriteListCell.swift */,
-				4E9711D629F15C0300BE9727 /* FavoriteListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				4E9711BA29EF26D900BE9727 /* Constants.swift */,
+				4E9711DF29F1771900BE9727 /* PersistencyManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -216,6 +218,26 @@
 				4E9711C329EFECED00BE9727 /* APIMethodProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4E9711EA29F19C6700BE9727 /* Pairs */ = {
+			isa = PBXGroup;
+			children = (
+				4E9711C929F0358F00BE9727 /* PairListCell.swift */,
+				4E9711CA29F0358F00BE9727 /* PairListCell.xib */,
+			);
+			path = Pairs;
+			sourceTree = "<group>";
+		};
+		4E9711EB29F19C7000BE9727 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				4E9711D529F15C0300BE9727 /* FavoriteListHorizontalCell.swift */,
+				4E9711D629F15C0300BE9727 /* FavoriteListHorizontalCell.xib */,
+				4EB6276129F1A15400E53D03 /* FavoriteCell.swift */,
+				4EB6276229F1A15400E53D03 /* FavoriteCell.xib */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,9 +307,10 @@
 				4E3E8E3229EEFED500D1F87A /* LaunchScreen.storyboard in Resources */,
 				4E9711CC29F0358F00BE9727 /* PairListCell.xib in Resources */,
 				4E3E8E2F29EEFED500D1F87A /* Assets.xcassets in Resources */,
+				4EB6276429F1A15400E53D03 /* FavoriteCell.xib in Resources */,
 				4E3E8E2A29EEFED400D1F87A /* Main.storyboard in Resources */,
 				4E9711D029F1514900BE9727 /* ListViewSectionHeader.xib in Resources */,
-				4E9711D829F15C0300BE9727 /* FavoriteListCell.xib in Resources */,
+				4E9711D829F15C0300BE9727 /* FavoriteListHorizontalCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,13 +327,14 @@
 				4E3E8E2729EEFED400D1F87A /* ListViewController.swift in Sources */,
 				4E9711C429EFECEE00BE9727 /* APIMethodProtocol.swift in Sources */,
 				4E3E8E2329EEFED400D1F87A /* AppDelegate.swift in Sources */,
-				4E3E8E2D29EEFED400D1F87A /* CoinWatch.xcdatamodeld in Sources */,
 				4E9711CF29F1514900BE9727 /* ListViewSectionHeader.swift in Sources */,
 				4E3E8E2529EEFED400D1F87A /* SceneDelegate.swift in Sources */,
 				4E9711B829EF203400BE9727 /* SectionType.swift in Sources */,
 				4E3E8E4629EF057500D1F87A /* ListProtocols.swift in Sources */,
-				4E9711D729F15C0300BE9727 /* FavoriteListCell.swift in Sources */,
+				4E9711E029F1771900BE9727 /* PersistencyManager.swift in Sources */,
+				4E9711D729F15C0300BE9727 /* FavoriteListHorizontalCell.swift in Sources */,
 				4E9711C829F011FB00BE9727 /* PairList.swift in Sources */,
+				4EB6276329F1A15400E53D03 /* FavoriteCell.swift in Sources */,
 				4E9711C629EFFF0400BE9727 /* ListViewDataProvider.swift in Sources */,
 				4E9711BB29EF26D900BE9727 /* Constants.swift in Sources */,
 			);
@@ -551,19 +575,6 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		4E3E8E2B29EEFED400D1F87A /* CoinWatch.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				4E3E8E2C29EEFED400D1F87A /* CoinWatch.xcdatamodel */,
-			);
-			currentVersion = 4E3E8E2C29EEFED400D1F87A /* CoinWatch.xcdatamodel */;
-			path = CoinWatch.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 4E3E8E1729EEFED400D1F87A /* Project object */;
 }

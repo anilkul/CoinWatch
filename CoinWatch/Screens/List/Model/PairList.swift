@@ -26,48 +26,83 @@ struct Pair: Decodable {
 }
 
 class BasePresentationObject: BaseCellPresentable {
+    var type: ItemType = .pair
+}
+
+class FavoritePresentationObject: BasePresentationObject, PairFavoritable, Codable {
+    var name: String = ""
     var last: String = ""
     var symbol: String = ""
     var dailyPercent: String = ""
-    var type: ItemType = .pair
     var isFavorite = false
-}
-
-final class PairPresentationObject: BasePresentationObject, PairPresentable {
-    let name: String
-    let volume: String
-    let numeratorSymbol: String
-    let percentageColorName: String
+    var percentageColorName: String = ""
     
-    init(pair: Pair) {
-        name = pair.pairNormalized.replacingOccurrences(of: "_", with: "/")
-        volume = String(pair.volume)
-        numeratorSymbol = pair.numeratorSymbol
-        percentageColorName = pair.dailyPercent.sign == .minus ? "DecreasedPercentageColor" : "IncreasedPercentageColor"
+    init(name: String = "", last: String = "", symbol: String = "", dailyPercent: String = "", type: ItemType = .pair, isFavorite: Bool = false, percentageColorName: String = "") {
+        self.last = last
+        self.symbol = symbol
+        self.dailyPercent = dailyPercent
+        self.isFavorite = isFavorite
+        self.percentageColorName = percentageColorName
         super.init()
-        symbol = pair.pair
-        last = String(pair.last)
-        dailyPercent = "%\(abs(pair.dailyPercent))"
-        
-        type = .pair
+        self.type = type
     }
 }
 
-protocol BaseCellPresentable {
+final class PairPresentationObject: FavoritePresentationObject, PairPresentable {
+    let volume: String
+    let numeratorSymbol: String
+    
+    init(type: ItemType, pair: Pair) {
+        volume = String(pair.volume)
+        numeratorSymbol = pair.numeratorSymbol
+        super.init()
+        name = pair.pairNormalized.replacingOccurrences(of: "_", with: "/")
+        percentageColorName = pair.dailyPercent.sign == .minus ? "DecreasedPercentageColor" : "IncreasedPercentageColor"
+        symbol = pair.pair
+        last = String(pair.last)
+        dailyPercent = "%\(abs(pair.dailyPercent))"
+        self.type = type
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
+}
+
+protocol BaseCellPresentable: AnyObject {
     var type: ItemType { get }
+}
+
+protocol PairFavoritable: BaseCellPresentable {
+    var name: String { get }
     var symbol: String { get }
     var last: String { get }
     var dailyPercent: String { get }
     var isFavorite: Bool { get set }
-}
-
-protocol PairPresentable: BaseCellPresentable {
-    var name: String { get }
-    var volume: String { get }
-    var numeratorSymbol: String { get }
     var percentageColorName: String { get }
 }
 
-protocol HorizontalCellPresentable: BaseCellPresentable {
+protocol PairPresentable: PairFavoritable {
+    var volume: String { get }
+    var numeratorSymbol: String { get }
+}
+
+protocol FavoriteListPresentable: BaseCellPresentable {
+    var favorites: [PairFavoritable] { get set }
+}
+
+extension FavoriteListPresentable {
+    var type: ItemType {
+        return .favorite
+    }
+}
+
+final class FavoriteListPresentationObject: FavoriteListPresentable {
+    var favorites: [PairFavoritable]
+    var type: ItemType
     
+    init(type: ItemType, favorites: [PairFavoritable]) {
+        self.type = type
+        self.favorites = favorites
+    }
 }

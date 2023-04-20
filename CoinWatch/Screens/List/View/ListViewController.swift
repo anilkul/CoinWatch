@@ -24,16 +24,18 @@ final class ListViewController: UIViewController {
     }
     
     private func registerCollectionViewComponents() {
-        let identifier = String(describing: PairListCell.self)
-        collectionView.register(UINib(nibName: identifier, bundle: nil), forCellWithReuseIdentifier: identifier)
+        [PairListCell.self, FavoriteListHorizontalCell.self].forEach { cell in
+            let identifier = String(describing: cell)
+            collectionView.register(UINib(nibName: identifier, bundle: nil), forCellWithReuseIdentifier: identifier)
+        }
+        
         collectionView.register(UINib.init(nibName: String(describing: ListViewSectionHeader.self), bundle: nil),
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: String(describing: ListViewSectionHeader.self))
     }
     
     private func setupViewModel() {
-        let networkManager: NetworkManagable = NetworkManager()
-        let dataProvider: ListViewDataProvidable = ListViewDataProvider(networkManager: networkManager)
+        let dataProvider: ListViewDataProvidable = ListViewDataProvider()
         viewModel = ListViewModel(dataProvider: dataProvider)
     }
     
@@ -65,13 +67,12 @@ extension ListViewController: UICollectionViewDataSource {
         switch sectionType {
         case .favorites:
             guard
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PairListCell.self), for: indexPath) as? PairListCell,
-                let presentationObject = viewModel.presentationObject(at: indexPath) as? PairPresentable
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: FavoriteListHorizontalCell.self), for: indexPath) as? FavoriteListHorizontalCell,
+                let presentationObject = viewModel.presentationObject(at: indexPath) as? FavoriteListPresentable
             else {
               fatalError()
             }
-            cell.populate(with: presentationObject)
-            cell.delegate = viewModel
+            cell.populate(presentationObject: presentationObject)
             return cell
         case .pairs:
             guard
@@ -80,7 +81,7 @@ extension ListViewController: UICollectionViewDataSource {
             else {
               fatalError()
             }
-            cell.delegate = viewModel
+            cell.delegate = self.viewModel
             cell.populate(with: presentationObject)
             return cell
         }
@@ -122,15 +123,21 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
             if !viewModel.isFavoritesSectionActive() {
                 return .zero
             }
-            let presentationObject = viewModel.presentationObject(at: indexPath) as? PairPresentable
-            return presentationObject!.type.itemSize
+            let presentationObject = viewModel.presentationObject(at: indexPath) as? FavoriteListPresentable
+            return presentationObject?.type.itemSize ?? .zero
         case .pairs:
             let presentationObject = viewModel.presentationObject(at: indexPath) as? PairPresentable
-            return presentationObject!.type.itemSize
+            return presentationObject?.type.itemSize ?? .zero
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         viewModel.willDisplayCell(at: indexPath)
+    }
+}
+
+extension ListViewController: PairListCellDelegate {
+    func didReceive(action: CellAction, presentationObject: PairPresentable) {
+        print("asd")
     }
 }
