@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ListViewModelProtocol {
+protocol ListViewModelProtocol: PairListCellDelegate {
     var reloadData: VoidHandler? { get set }
     
     func numberOfSections() -> Int

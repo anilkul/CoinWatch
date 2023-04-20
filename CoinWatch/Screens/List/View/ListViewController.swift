@@ -17,11 +17,18 @@ final class ListViewController: UIViewController {
         super.viewDidLoad()
         setupViewModel()
         setupBindings()
-        let identifier = String(describing: PairListCell.self)
-        collectionView.register(UINib(nibName: identifier, bundle: nil), forCellWithReuseIdentifier: identifier)
+        registerCollectionViewComponents()
         viewModel.requestPairList { [weak self] in
             self?.collectionView.dataSource = self
         }
+    }
+    
+    private func registerCollectionViewComponents() {
+        let identifier = String(describing: PairListCell.self)
+        collectionView.register(UINib(nibName: identifier, bundle: nil), forCellWithReuseIdentifier: identifier)
+        collectionView.register(UINib.init(nibName: String(describing: ListViewSectionHeader.self), bundle: nil),
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: String(describing: ListViewSectionHeader.self))
     }
     
     private func setupViewModel() {
@@ -64,6 +71,7 @@ extension ListViewController: UICollectionViewDataSource {
               fatalError()
             }
             cell.populate(with: presentationObject)
+            cell.delegate = viewModel
             return cell
         case .pairs:
             guard
@@ -72,8 +80,33 @@ extension ListViewController: UICollectionViewDataSource {
             else {
               fatalError()
             }
+            cell.delegate = viewModel
             cell.populate(with: presentationObject)
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader,
+              let sectionType = SectionType(rawValue: indexPath.section),
+              let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: ListViewSectionHeader.self), for: indexPath) as? ListViewSectionHeader else {
+          return UICollectionReusableView()
+        }
+        
+        sectionHeader.titleLabel.text = sectionType.title
+        return sectionHeader
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        guard let sectionType = SectionType(rawValue: section) else {
+            return .zero
+        }
+        
+        switch sectionType {
+        case .favorites:
+            return viewModel.isFavoritesSectionActive() ? sectionType.headerSize : .zero
+        case .pairs:
+            return sectionType.headerSize
         }
     }
 }

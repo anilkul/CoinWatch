@@ -26,51 +26,48 @@ struct Pair: Decodable {
 }
 
 class BasePresentationObject: BaseCellPresentable {
+    var last: String = ""
+    var symbol: String = ""
+    var dailyPercent: String = ""
     var type: ItemType = .pair
+    var isFavorite = false
 }
 
 final class PairPresentationObject: BasePresentationObject, PairPresentable {
-    var isFavorite: Bool
     let name: String
-    let symbol: String
-    let last: String
     let volume: String
-    let dailyPercent: String
     let numeratorSymbol: String
     let percentageColorName: String
     
     init(pair: Pair) {
-        isFavorite = false
         name = pair.pairNormalized.replacingOccurrences(of: "_", with: "/")
-        symbol = pair.pair
-        last = String(pair.last)
         volume = String(pair.volume)
-        dailyPercent = "%\(abs(pair.dailyPercent))"
         numeratorSymbol = pair.numeratorSymbol
         percentageColorName = pair.dailyPercent.sign == .minus ? "DecreasedPercentageColor" : "IncreasedPercentageColor"
         super.init()
+        symbol = pair.pair
+        last = String(pair.last)
+        dailyPercent = "%\(abs(pair.dailyPercent))"
+        
         type = .pair
     }
 }
 
 protocol BaseCellPresentable {
     var type: ItemType { get }
-}
-
-protocol HorizontalCellPresentable: BaseCellPresentable {
-    
-}
-
-protocol PairPresentable: PairFavoritable {
-    var isFavorite: Bool { get }
     var symbol: String { get }
+    var last: String { get }
+    var dailyPercent: String { get }
+    var isFavorite: Bool { get set }
+}
+
+protocol PairPresentable: BaseCellPresentable {
+    var name: String { get }
     var volume: String { get }
     var numeratorSymbol: String { get }
     var percentageColorName: String { get }
 }
 
-protocol PairFavoritable: BaseCellPresentable {
-    var name: String { get }
-    var last: String { get }
-    var dailyPercent: String { get }
+protocol HorizontalCellPresentable: BaseCellPresentable {
+    
 }

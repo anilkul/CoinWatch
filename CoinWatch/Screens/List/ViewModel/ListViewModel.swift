@@ -37,8 +37,13 @@ final class ListViewModel: ListViewModelProtocol {
     }
     
     private func parse(_ list: PairList) {
-        var favorites: [BaseCellPresentable] = []
-        let pairList: [BaseCellPresentable] = list.data.map { PairPresentationObject(pair: $0) }
+        let favorites: [BaseCellPresentable] = []
+        let pairList: [BaseCellPresentable] = list.data.map {
+            let object = PairPresentationObject(pair: $0)
+            object.isFavorite = favorites.lazy.contains(where: { $0.symbol == object.symbol })
+            return object
+            
+        }
         dataSource = [favorites, pairList]
     }
     
@@ -83,6 +88,19 @@ final class ListViewModel: ListViewModelProtocol {
         : dataSource[indexPath.section].count
         DispatchQueue.main.async {
             self.reloadData?()
+        }
+    }
+}
+
+extension ListViewModel {
+    func didReceive(action: CellAction, presentationObject: PairPresentable) {
+        switch action {
+        case .select:
+            break
+            // routing
+        case .favorite:
+            break
+            // set fav
         }
     }
 }

@@ -25,6 +25,10 @@
 		4E9711C829F011FB00BE9727 /* PairList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711C729F011FB00BE9727 /* PairList.swift */; };
 		4E9711CB29F0358F00BE9727 /* PairListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711C929F0358F00BE9727 /* PairListCell.swift */; };
 		4E9711CC29F0358F00BE9727 /* PairListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9711CA29F0358F00BE9727 /* PairListCell.xib */; };
+		4E9711CF29F1514900BE9727 /* ListViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711CD29F1514900BE9727 /* ListViewSectionHeader.swift */; };
+		4E9711D029F1514900BE9727 /* ListViewSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9711CE29F1514900BE9727 /* ListViewSectionHeader.xib */; };
+		4E9711D729F15C0300BE9727 /* FavoriteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9711D529F15C0300BE9727 /* FavoriteListCell.swift */; };
+		4E9711D829F15C0300BE9727 /* FavoriteListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9711D629F15C0300BE9727 /* FavoriteListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +51,10 @@
 		4E9711C729F011FB00BE9727 /* PairList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairList.swift; sourceTree = "<group>"; };
 		4E9711C929F0358F00BE9727 /* PairListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListCell.swift; sourceTree = "<group>"; };
 		4E9711CA29F0358F00BE9727 /* PairListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PairListCell.xib; sourceTree = "<group>"; };
+		4E9711CD29F1514900BE9727 /* ListViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewSectionHeader.swift; sourceTree = "<group>"; };
+		4E9711CE29F1514900BE9727 /* ListViewSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewSectionHeader.xib; sourceTree = "<group>"; };
+		4E9711D529F15C0300BE9727 /* FavoriteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListCell.swift; sourceTree = "<group>"; };
+		4E9711D629F15C0300BE9727 /* FavoriteListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +156,10 @@
 				4E3E8E2629EEFED400D1F87A /* ListViewController.swift */,
 				4E9711C929F0358F00BE9727 /* PairListCell.swift */,
 				4E9711CA29F0358F00BE9727 /* PairListCell.xib */,
+				4E9711CD29F1514900BE9727 /* ListViewSectionHeader.swift */,
+				4E9711CE29F1514900BE9727 /* ListViewSectionHeader.xib */,
+				4E9711D529F15C0300BE9727 /* FavoriteListCell.swift */,
+				4E9711D629F15C0300BE9727 /* FavoriteListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,6 +286,8 @@
 				4E9711CC29F0358F00BE9727 /* PairListCell.xib in Resources */,
 				4E3E8E2F29EEFED500D1F87A /* Assets.xcassets in Resources */,
 				4E3E8E2A29EEFED400D1F87A /* Main.storyboard in Resources */,
+				4E9711D029F1514900BE9727 /* ListViewSectionHeader.xib in Resources */,
+				4E9711D829F15C0300BE9727 /* FavoriteListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,9 +305,11 @@
 				4E9711C429EFECEE00BE9727 /* APIMethodProtocol.swift in Sources */,
 				4E3E8E2329EEFED400D1F87A /* AppDelegate.swift in Sources */,
 				4E3E8E2D29EEFED400D1F87A /* CoinWatch.xcdatamodeld in Sources */,
+				4E9711CF29F1514900BE9727 /* ListViewSectionHeader.swift in Sources */,
 				4E3E8E2529EEFED400D1F87A /* SceneDelegate.swift in Sources */,
 				4E9711B829EF203400BE9727 /* SectionType.swift in Sources */,
 				4E3E8E4629EF057500D1F87A /* ListProtocols.swift in Sources */,
+				4E9711D729F15C0300BE9727 /* FavoriteListCell.swift in Sources */,
 				4E9711C829F011FB00BE9727 /* PairList.swift in Sources */,
 				4E9711C629EFFF0400BE9727 /* ListViewDataProvider.swift in Sources */,
 				4E9711BB29EF26D900BE9727 /* Constants.swift in Sources */,

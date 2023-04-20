@@ -29,13 +29,18 @@
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="wxQ-gG-Stq">
                                 <rect key="frame" x="24.000000000000007" y="12" width="80.666666666666686" height="20"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IP8-Fv-7Qd">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQq-Re-FrM">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="1Wx-uX-Ok1"/>
-                                            <constraint firstAttribute="height" constant="20" id="8Wp-bd-L8z"/>
+                                            <constraint firstAttribute="height" constant="20" id="lRt-38-x3d"/>
+                                            <constraint firstAttribute="width" constant="20" id="pJq-FJ-UcL"/>
                                         </constraints>
-                                    </imageView>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="didTapFavoriteButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="OuI-BP-jPB"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plV-qj-Khl">
                                         <rect key="frame" x="41" y="0.33333333333333393" width="39.666666666666657" height="19.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -103,7 +108,7 @@
             </constraints>
             <connections>
                 <outlet property="dailyPercentageLabel" destination="JaD-ma-yJ9" id="yaM-ry-fAb"/>
-                <outlet property="favoriteIconImageView" destination="IP8-Fv-7Qd" id="FdB-G5-AhX"/>
+                <outlet property="favoriteButton" destination="GQq-Re-FrM" id="8LK-He-Bbw"/>
                 <outlet property="lastLabel" destination="Wh0-8V-7qo" id="QIE-ca-58B"/>
                 <outlet property="numeratorNameLabel" destination="0ka-uW-BjO" id="oWG-Me-MWb"/>
                 <outlet property="pairNameLabel" destination="plV-qj-Khl" id="c2i-mc-mbD"/>
