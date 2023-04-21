@@ -26,7 +26,7 @@ enum SectionType: Int, CaseIterable {
     }
 }
 
-enum ItemType: Codable {
+enum ItemType {
     case horizontal
     case pair
     case favorite

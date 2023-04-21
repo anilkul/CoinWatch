@@ -30,14 +30,15 @@ class BasePresentationObject: BaseCellPresentable {
 }
 
 class FavoritePresentationObject: BasePresentationObject, PairFavoritable, Codable {
-    var name: String = ""
-    var last: String = ""
-    var symbol: String = ""
-    var dailyPercent: String = ""
-    var isFavorite = false
-    var percentageColorName: String = ""
+    var name: String
+    var last: String
+    var symbol: String
+    var dailyPercent: String
+    var isFavorite: Bool
+    var percentageColorName: String
     
     init(name: String = "", last: String = "", symbol: String = "", dailyPercent: String = "", type: ItemType = .pair, isFavorite: Bool = false, percentageColorName: String = "") {
+        self.name = name
         self.last = last
         self.symbol = symbol
         self.dailyPercent = dailyPercent
@@ -70,7 +71,7 @@ final class PairPresentationObject: FavoritePresentationObject, PairPresentable 
 }
 
 protocol BaseCellPresentable: AnyObject {
-    var type: ItemType { get }
+    var type: ItemType { get set }
 }
 
 protocol PairFavoritable: BaseCellPresentable {
@@ -97,12 +98,12 @@ extension FavoriteListPresentable {
     }
 }
 
-final class FavoriteListPresentationObject: FavoriteListPresentable {
+final class FavoriteListPresentationObject: BasePresentationObject, FavoriteListPresentable {
     var favorites: [PairFavoritable]
-    var type: ItemType
     
     init(type: ItemType, favorites: [PairFavoritable]) {
-        self.type = type
         self.favorites = favorites
+        super.init()
+        self.type = type
     }
 }

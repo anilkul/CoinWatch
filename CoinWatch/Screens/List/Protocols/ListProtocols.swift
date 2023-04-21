@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ListViewModelProtocol: PairListCellDelegate {
+protocol ListViewModelProtocol: PairListCellDelegate, FavoriteListHorizontalCellDelegate {
     var reloadData: VoidHandler? { get set }
     
     func numberOfSections() -> Int

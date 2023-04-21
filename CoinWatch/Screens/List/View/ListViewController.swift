@@ -72,6 +72,7 @@ extension ListViewController: UICollectionViewDataSource {
             else {
               fatalError()
             }
+            cell.delegate = viewModel
             cell.populate(presentationObject: presentationObject)
             return cell
         case .pairs:
@@ -81,7 +82,7 @@ extension ListViewController: UICollectionViewDataSource {
             else {
               fatalError()
             }
-            cell.delegate = self.viewModel
+            cell.delegate = viewModel
             cell.populate(with: presentationObject)
             return cell
         }
@@ -138,6 +139,6 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
 
 extension ListViewController: PairListCellDelegate {
     func didReceive(action: CellAction, presentationObject: PairPresentable) {
-        print("asd")
+        viewModel.didReceive(action: action, presentationObject: presentationObject)
     }
 }

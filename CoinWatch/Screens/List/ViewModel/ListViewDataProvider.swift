@@ -9,7 +9,7 @@ import Foundation
 
 protocol ListViewDataProvidable {
     func requestPairs(_ completion: @escaping (APIResult<PairList>) -> Void)
-    func setfavorite(_ state: Bool, _ favoritedPair: FavoritePresentationObject, _ completion: VoidHandler?)
+    func setfavorites(_ state: Bool, _ favoriteList: [FavoritePresentationObject], _ completion: VoidHandler?)
     func fetchFavoriteList(fetchOffset: Int?) -> [FavoritePresentationObject]
 }
 
@@ -30,16 +30,8 @@ final class ListViewDataProvider: ListViewDataProvidable {
         networkManager.request(apiMethod, response: completion)
     }
     
-    func setfavorite(_ state: Bool, _ favoritedPair: FavoritePresentationObject, _ completion: VoidHandler?) {
-        var favorites: [FavoritePresentationObject] = persistencyManager.decode(for: .favorites, defaultValue: [])
-        switch state {
-        case true:
-            favorites.append(favoritedPair)
-            persistencyManager.encode(newValue: favorites, for: .favorites)
-        case false:
-            favorites.removeAll(where: { $0.symbol == favoritedPair.symbol })
-            persistencyManager.encode(newValue: favorites, for: .favorites)
-        }
+    func setfavorites(_ state: Bool, _ favoriteList: [FavoritePresentationObject], _ completion: VoidHandler?) {
+        persistencyManager.encode(newValue: favoriteList, for: .favorites)
         completion?()
     }
     

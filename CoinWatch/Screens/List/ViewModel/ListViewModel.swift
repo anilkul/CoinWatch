@@ -43,8 +43,8 @@ final class ListViewModel: ListViewModelProtocol {
             let object = PairPresentationObject(type: .pair, pair: $0)
             object.isFavorite = favorites.contains(where: { $0.symbol == object.symbol })
             return object
-            
         }
+        
         dataSource = [favroteList, pairList]
     }
     
@@ -73,8 +73,10 @@ final class ListViewModel: ListViewModelProtocol {
     }
     
     func isFavoritesSectionActive() -> Bool {
-        let favorites = (dataSource.first?.first as? FavoriteListPresentable)?.favorites
-        return !(favorites?.isEmpty ?? true)
+        if let favorites = (dataSource[SectionType.favorites.rawValue].first as? FavoriteListPresentable)?.favorites {
+            return !favorites.isEmpty
+        }
+        return false
     }
     
     func willDisplayCell(at indexPath: IndexPath) {
@@ -103,28 +105,34 @@ extension ListViewModel {
         case .favorite:
             presentationObject.isFavorite.toggle()
             guard
-                let favoritedObject = presentationObject as? FavoritePresentationObject,
-                var favorites = dataSource[SectionType.favorites.rawValue] as? [PairFavoritable]
+                let favoritedPairObject = presentationObject as? FavoritePresentationObject,
+                let favoriteListObject = dataSource[SectionType.favorites.rawValue].first as? FavoriteListPresentable
             else {
                 return
             }
+            
             if presentationObject.isFavorite {
-                favorites.append(favoritedObject)
+                favoriteListObject.favorites.append(favoritedPairObject)
             } else {
-                favorites.removeAll(where: { $0.symbol == favoritedObject.symbol })
+                favoriteListObject.favorites.removeAll(where: { $0.symbol == favoritedPairObject.symbol })
             }
             
-            dataProvider.setfavorite(presentationObject.isFavorite, favoritedObject) { [weak self] in
+            let newFavoriteList = favoriteListObject.favorites as? [FavoritePresentationObject] ?? []
+            dataProvider.setfavorites(presentationObject.isFavorite, newFavoriteList) { [weak self] in
                 self?.reloadData?()
             }
+        }
+    }
+    
+    func didReceive(action: CellAction, presentationObject: PairFavoritable) {
+        switch action {
+        case .select:
+            break
+            // routing
+        default:
+            break
         }
     }
 }
 
 typealias VoidHandler = () -> Void
-
-extension Array {
-  subscript(safe index: Int) -> Element? {
-    return indices ~= index ? self[index] : nil
-  }
-}

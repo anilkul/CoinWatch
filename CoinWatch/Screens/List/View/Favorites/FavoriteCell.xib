@@ -44,9 +44,20 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQn-xu-R9j">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="didTapCell:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Fmm-y6-bTI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="FavoriteListcellBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="OQn-xu-R9j" firstAttribute="leading" secondItem="tTo-14-xsY" secondAttribute="leading" id="JEF-CZ-JOE"/>
+                            <constraint firstAttribute="trailing" secondItem="OQn-xu-R9j" secondAttribute="trailing" id="Z6b-9W-qmy"/>
+                            <constraint firstItem="OQn-xu-R9j" firstAttribute="top" secondItem="tTo-14-xsY" secondAttribute="top" id="fPF-Tg-JZ0"/>
+                            <constraint firstAttribute="bottom" secondItem="OQn-xu-R9j" secondAttribute="bottom" id="hQE-9l-sdb"/>
                             <constraint firstItem="HH1-Gh-sXM" firstAttribute="leading" secondItem="tTo-14-xsY" secondAttribute="leading" constant="5" id="nwq-cH-Xsl"/>
                             <constraint firstItem="HH1-Gh-sXM" firstAttribute="top" secondItem="tTo-14-xsY" secondAttribute="top" constant="5" id="pJM-FT-0nn"/>
                         </constraints>
