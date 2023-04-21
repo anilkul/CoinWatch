@@ -16,15 +16,16 @@ final class PairListCell: UICollectionViewCell {
     @IBOutlet private weak var volumeLabel: UILabel!
     @IBOutlet private weak var numeratorNameLabel: UILabel!
     
+    // MARK: - Variables
     private var presentationObject: PairPresentable!
     weak var delegate: PairListCellDelegate?
     
-    // MARK: - Variables
-    
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
+    // MARK: - UI Operations
     func populate(with presentationObject: PairPresentable) {
         self.presentationObject = presentationObject
         favoriteButton.setTitle("", for: .normal)
@@ -38,8 +39,13 @@ final class PairListCell: UICollectionViewCell {
         numeratorNameLabel.text = presentationObject.numeratorSymbol
     }
     
+    // MARK: - Actions
     @IBAction func didTapFavoriteButton(_ sender: UIButton) {
         delegate?.didReceive(action: .favorite, presentationObject: presentationObject)
+    }
+    
+    @IBAction func didTapCell(_ sender: UIButton) {
+        delegate?.didReceive(action: .select, presentationObject: presentationObject)
     }
 }
 

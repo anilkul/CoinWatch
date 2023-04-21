@@ -9,6 +9,7 @@ import Foundation
 
 protocol ListViewModelProtocol: PairListCellDelegate, FavoriteListHorizontalCellDelegate {
     var reloadData: VoidHandler? { get set }
+    var routingDelegate: DetailRoutingDelegate? { get set }
     
     func numberOfSections() -> Int
     func numberOfItems(in section: Int) -> Int

@@ -40,7 +40,6 @@ final class NetworkManager: NetworkManagable {
   }
 
   func process<T: Decodable>(_ result: AFDataResponse<T>, ofType type: T.Type) -> APIResult<T> {
-    
     switch result.result {
     case .success(let response):
       return APIResult<T>.success(response)

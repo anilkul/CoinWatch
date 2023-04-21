@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E31DDE429F28ECA00D22233 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 4E31DDE329F28ECA00D22233 /* Charts */; };
+		4E31DDE629F2919E00D22233 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31DDE529F2919E00D22233 /* DetailViewModel.swift */; };
+		4E31DDE829F291FF00D22233 /* ChartDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31DDE729F291FF00D22233 /* ChartDataModel.swift */; };
+		4E31DDEA29F29CFA00D22233 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31DDE929F29CFA00D22233 /* DetailViewController.swift */; };
 		4E3E8E2329EEFED400D1F87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2229EEFED400D1F87A /* AppDelegate.swift */; };
 		4E3E8E2529EEFED400D1F87A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2429EEFED400D1F87A /* SceneDelegate.swift */; };
 		4E3E8E2729EEFED400D1F87A /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E8E2629EEFED400D1F87A /* ListViewController.swift */; };
@@ -34,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E31DDE529F2919E00D22233 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		4E31DDE729F291FF00D22233 /* ChartDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataModel.swift; sourceTree = "<group>"; };
+		4E31DDE929F29CFA00D22233 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		4E3E8E1F29EEFED400D1F87A /* CoinWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E3E8E2229EEFED400D1F87A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E3E8E2429EEFED400D1F87A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E9711BE29EFDDA100BE9727 /* Alamofire in Frameworks */,
+				4E31DDE429F28ECA00D22233 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +176,7 @@
 		4E3E8E3F29EF04E900D1F87A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4E31DDE529F2919E00D22233 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -175,6 +184,8 @@
 		4E3E8E4029EF04EF00D1F87A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E31DDE729F291FF00D22233 /* ChartDataModel.swift */,
+				4E31DDE929F29CFA00D22233 /* DetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -258,6 +269,7 @@
 			name = CoinWatch;
 			packageProductDependencies = (
 				4E9711BD29EFDDA100BE9727 /* Alamofire */,
+				4E31DDE329F28ECA00D22233 /* Charts */,
 			);
 			productName = CoinWatch;
 			productReference = 4E3E8E1F29EEFED400D1F87A /* CoinWatch.app */;
@@ -289,6 +301,7 @@
 			mainGroup = 4E3E8E1629EEFED400D1F87A;
 			packageReferences = (
 				4E9711BC29EFDDA100BE9727 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				4E31DDE229F28ECA00D22233 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 4E3E8E2029EEFED400D1F87A /* Products */;
 			projectDirPath = "";
@@ -321,14 +334,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E31DDE629F2919E00D22233 /* DetailViewModel.swift in Sources */,
 				4E9711C129EFEBCA00BE9727 /* NetworkManager.swift in Sources */,
 				4E9711CB29F0358F00BE9727 /* PairListCell.swift in Sources */,
 				4E3E8E4329EF053300D1F87A /* ListViewModel.swift in Sources */,
+				4E31DDE829F291FF00D22233 /* ChartDataModel.swift in Sources */,
 				4E3E8E2729EEFED400D1F87A /* ListViewController.swift in Sources */,
 				4E9711C429EFECEE00BE9727 /* APIMethodProtocol.swift in Sources */,
 				4E3E8E2329EEFED400D1F87A /* AppDelegate.swift in Sources */,
 				4E9711CF29F1514900BE9727 /* ListViewSectionHeader.swift in Sources */,
 				4E3E8E2529EEFED400D1F87A /* SceneDelegate.swift in Sources */,
+				4E31DDEA29F29CFA00D22233 /* DetailViewController.swift in Sources */,
 				4E9711B829EF203400BE9727 /* SectionType.swift in Sources */,
 				4E3E8E4629EF057500D1F87A /* ListProtocols.swift in Sources */,
 				4E9711E029F1771900BE9727 /* PersistencyManager.swift in Sources */,
@@ -558,6 +574,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4E31DDE229F28ECA00D22233 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4E9711BC29EFDDA100BE9727 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -569,6 +593,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4E31DDE329F28ECA00D22233 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E31DDE229F28ECA00D22233 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
 		4E9711BD29EFDDA100BE9727 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4E9711BC29EFDDA100BE9727 /* XCRemoteSwiftPackageReference "Alamofire" */;

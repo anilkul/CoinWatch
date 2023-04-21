@@ -18,11 +18,14 @@ final class ListViewController: UIViewController {
         setupViewModel()
         setupBindings()
         registerCollectionViewComponents()
+        viewModel.routingDelegate = self
         viewModel.requestPairList { [weak self] in
             self?.collectionView.dataSource = self
         }
+        navigationController?.delegate = self
     }
     
+    // MARK: - UI Operations
     private func registerCollectionViewComponents() {
         [PairListCell.self, FavoriteListHorizontalCell.self].forEach { cell in
             let identifier = String(describing: cell)
@@ -34,6 +37,7 @@ final class ListViewController: UIViewController {
                                 withReuseIdentifier: String(describing: ListViewSectionHeader.self))
     }
     
+    // MARK: - Setup View Model
     private func setupViewModel() {
         let dataProvider: ListViewDataProvidable = ListViewDataProvider()
         viewModel = ListViewModel(dataProvider: dataProvider)
@@ -51,6 +55,7 @@ final class ListViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension ListViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         viewModel.numberOfSections()
@@ -113,6 +118,7 @@ extension ListViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension ListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let sectionType = SectionType(rawValue: indexPath.section) else {
@@ -137,8 +143,32 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - PairListCellDelegate
 extension ListViewController: PairListCellDelegate {
     func didReceive(action: CellAction, presentationObject: PairPresentable) {
         viewModel.didReceive(action: action, presentationObject: presentationObject)
+    }
+}
+
+// MARK: - DetailRoutingDelegate
+extension ListViewController: DetailRoutingDelegate {
+    func navigateToDetail(with viewModel: DetailViewModelProtocol) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let identifier = String(describing: DetailViewController.self)
+        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: String(describing: DetailViewController.self)) as? DetailViewController else {
+//          fatalError(ErrorLogger.UIError.couldNotDefineController(identifier: identifier).errorMessage(methodName: "\(#function)", fileName: "\(#file)"))
+            fatalError()
+        }
+        detailViewController.viewModel = viewModel
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+
+// MARK: - UINavigationControllerDelegate
+extension ListViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        let hide = viewController is ListViewController
+        navigationController.setNavigationBarHidden(hide, animated: animated)
     }
 }

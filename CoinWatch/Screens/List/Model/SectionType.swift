@@ -40,7 +40,7 @@ enum ItemType {
             let windowWidth = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.frame.width ?? UIScreen.main.bounds.width
             return CGSize(width: windowWidth, height: 50)
         case .favorite:
-            return CGSize(width: 60, height: 60)
+            return CGSize(width: 70, height: 60)
         }
     }
 }

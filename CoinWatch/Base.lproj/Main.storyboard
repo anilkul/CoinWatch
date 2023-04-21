@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1qF-f7-eg9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QJs-wF-KJQ">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -18,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="70a-6C-I4H">
-                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
                                 <color key="backgroundColor" name="MainBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ydf-RM-2VZ">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ydf-RM-2VZ">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="50" height="60"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ListViewSectionHeader" id="RAg-45-Xig" customClass="ListViewSectionHeader" customModule="Meditate" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ListViewSectionHeader" id="RAg-45-Xig" customClass="ListViewSectionHeader" customModule="CoinWatch" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
@@ -54,25 +54,65 @@
             </objects>
             <point key="canvasLocation" x="100" y="-803.3175355450237"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Hau-jx-TYn">
+        <!--Detail View Controller-->
+        <scene sceneID="fXm-Da-A5E">
             <objects>
-                <navigationController navigationBarHidden="YES" id="1qF-f7-eg9" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="W1E-dH-KEE">
+                <viewController storyboardIdentifier="DetailViewController" id="0zd-h7-DCO" customClass="DetailViewController" customModule="CoinWatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HhR-Ar-5fj">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpA-vq-AYg" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="127" width="390" height="130"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="fSL-iO-HmD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dbx-s3-Ykj"/>
+                        <color key="backgroundColor" name="MainBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hpA-vq-AYg" firstAttribute="top" secondItem="dbx-s3-Ykj" secondAttribute="top" constant="80" id="VaX-yF-HzC"/>
+                            <constraint firstItem="hpA-vq-AYg" firstAttribute="leading" secondItem="dbx-s3-Ykj" secondAttribute="leading" id="dl5-KZ-RTS"/>
+                            <constraint firstItem="dbx-s3-Ykj" firstAttribute="trailing" secondItem="hpA-vq-AYg" secondAttribute="trailing" id="joO-fo-gvm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lineChartView" destination="hpA-vq-AYg" id="RzV-ev-CWh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8SW-qa-xWu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="-803"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SCN-CC-KVZ">
+            <objects>
+                <navigationController id="QJs-wF-KJQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OY3-kC-F4u">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="MainLabelColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="MainLabelColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="i7J-Mn-gtm"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yec-h5-i2e"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qb4-Mc-kQ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w9Q-ma-oIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-712" y="-803"/>
+            <point key="canvasLocation" x="-760" y="-803"/>
         </scene>
     </scenes>
     <resources>
         <namedColor name="MainBackgroundColor">
             <color red="0.035294117647058823" green="0.062745098039215685" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainLabelColor">
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol ListViewDataProvidable {
     func requestPairs(_ completion: @escaping (APIResult<PairList>) -> Void)
     func setfavorites(_ state: Bool, _ favoriteList: [FavoritePresentationObject], _ completion: VoidHandler?)
     func fetchFavoriteList(fetchOffset: Int?) -> [FavoritePresentationObject]
+    func fetchChart(for symbol: String, _ completion: @escaping (APIResult<ChartDataModel>) -> Void)
 }
 
 final class ListViewDataProvider: ListViewDataProvidable {
@@ -37,5 +39,24 @@ final class ListViewDataProvider: ListViewDataProvidable {
     
     func fetchFavoriteList(fetchOffset: Int?) -> [FavoritePresentationObject] {
         return persistencyManager.decode(for: .favorites, defaultValue: [])
+    }
+    
+    func fetchChart(for symbol: String, _ completion: @escaping (APIResult<ChartDataModel>) -> Void) {
+        let to: Int = Int(Date().timeIntervalSince1970)
+        let from = Int(Date.init(timeIntervalSinceNow: -(3600 * 24 * 3)).timeIntervalSince1970)
+        let resolution: Double = 120
+        let parameters: Parameters = [
+            "to": to,
+            "from": from,
+            "resolution": resolution,
+            "symbol": symbol
+        ]
+        let apiMethod: APIMethod = APIMethod(
+            apiType: .graph,
+            apiVersion: .v1,
+            path: .klines,
+            parameters: parameters
+        )
+        networkManager.request(apiMethod, response: completion)
     }
 }

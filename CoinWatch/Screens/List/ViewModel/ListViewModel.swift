@@ -8,21 +8,25 @@
 import Foundation
 
 final class ListViewModel: ListViewModelProtocol {
+    // MARK: - Variables
     private let dataProvider: ListViewDataProvidable
     private var dataSource: [[BaseCellPresentable]] = []
     private var treshold: Int = 0
     
     var reloadData: VoidHandler?
+    weak var routingDelegate: DetailRoutingDelegate?
     
+    // MARK: - Initialization
     init(dataProvider: ListViewDataProvidable) {
         self.dataProvider = dataProvider
     }
     
+    // MARK: - Pair List Operations
     func requestPairList(_ completion: VoidHandler?) {
         dataProvider.requestPairs { [weak self] response in
             switch response {
-            case .success(let contentList):
-                self?.parse(contentList)
+            case .success(let pairList):
+                self?.parse(pairList)
                 completion?()
                 DispatchQueue.main.async {
                     self?.treshold += 20
@@ -48,6 +52,7 @@ final class ListViewModel: ListViewModelProtocol {
         dataSource = [favroteList, pairList]
     }
     
+    // MARK: - Data Source Operations
     func numberOfSections() -> Int {
         return SectionType.allCases.count
     }
@@ -96,12 +101,13 @@ final class ListViewModel: ListViewModelProtocol {
     }
 }
 
+// MARK: - Actions
 extension ListViewModel {
+    // Pair List Cell Action
     func didReceive(action: CellAction, presentationObject: PairPresentable) {
         switch action {
         case .select:
-            break
-            // routing
+            navigateToDetail(for: presentationObject.symbol, with: presentationObject.name)
         case .favorite:
             presentationObject.isFavorite.toggle()
             guard
@@ -124,15 +130,24 @@ extension ListViewModel {
         }
     }
     
+    // Favorite Cell Action
     func didReceive(action: CellAction, presentationObject: PairFavoritable) {
         switch action {
         case .select:
-            break
-            // routing
+            navigateToDetail(for: presentationObject.symbol, with: presentationObject.name)
         default:
             break
         }
     }
+    
+    private func navigateToDetail(for symbol: String, with name: String) {
+        let viewModel = DetailViewModel(name: name, symbol: symbol, dataProvider: dataProvider)
+        routingDelegate?.navigateToDetail(with: viewModel)
+    }
 }
 
 typealias VoidHandler = () -> Void
+
+protocol DetailRoutingDelegate: AnyObject {
+    func navigateToDetail(with viewModel: DetailViewModelProtocol)
+}

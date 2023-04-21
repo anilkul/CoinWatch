@@ -18,37 +18,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dng-vw-v7B">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dng-vw-v7B" userLabel="Container View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1FZ-dS-1V8">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FZ-dS-1V8">
                                 <rect key="frame" x="0.0" y="49" width="375" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="ListSeperatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Wld-Wd-XVS"/>
+                                </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="wxQ-gG-Stq">
-                                <rect key="frame" x="24.000000000000007" y="12" width="80.666666666666686" height="20"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvp-42-Cwe">
-                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="o8Z-Yx-6Vm"/>
-                                            <constraint firstAttribute="width" constant="20" id="xdE-nc-YV7"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <action selector="didTapFavoriteButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="OR1-Sr-bup"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plV-qj-Khl">
-                                        <rect key="frame" x="41" y="0.33333333333333393" width="39.666666666666657" height="19.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="QGD-Xb-5fn">
                                 <rect key="frame" x="275.33333333333331" y="12" width="75.666666666666686" height="33.666666666666664"/>
                                 <subviews>
@@ -58,13 +37,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wh0-8V-7qo">
                                                 <rect key="frame" x="0.0" y="0.0" width="39.666666666666664" height="19.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" name="MainLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaD-ma-yJ9">
                                                 <rect key="frame" x="44.666666666666686" y="5.0000000000000009" width="31" height="14.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" name="MainLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -75,26 +54,60 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaE-60-Rgi">
                                                 <rect key="frame" x="0.0" y="0.0" width="31" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" name="MainLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ka-uW-BjO">
                                                 <rect key="frame" x="36" y="0.0" width="31" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" name="MainLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKg-oU-8Hb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="didTapCell:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Nod-nx-WAU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvp-42-Cwe">
+                                <rect key="frame" x="24" y="12" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="3yC-WG-fXb"/>
+                                    <constraint firstAttribute="height" constant="20" id="ZHK-4h-VSQ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="didTapFavoriteButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="OR1-Sr-bup"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plV-qj-Khl">
+                                <rect key="frame" x="56" y="12.333333333333334" width="39.666666666666657" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" name="MainLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qKg-oU-8Hb" secondAttribute="trailing" id="2E2-ij-rjo"/>
+                            <constraint firstItem="plV-qj-Khl" firstAttribute="centerY" secondItem="kvp-42-Cwe" secondAttribute="centerY" id="AAg-Fb-cgM"/>
+                            <constraint firstAttribute="bottom" secondItem="qKg-oU-8Hb" secondAttribute="bottom" id="Age-c9-9tt"/>
+                            <constraint firstItem="plV-qj-Khl" firstAttribute="leading" secondItem="kvp-42-Cwe" secondAttribute="trailing" constant="12" id="Dkt-IW-Gyd"/>
                             <constraint firstItem="QGD-Xb-5fn" firstAttribute="top" secondItem="Dng-vw-v7B" secondAttribute="top" constant="12" id="Fbo-Oc-iAX"/>
-                            <constraint firstItem="wxQ-gG-Stq" firstAttribute="leading" secondItem="Dng-vw-v7B" secondAttribute="leading" constant="24" id="HP1-hM-Asp"/>
+                            <constraint firstItem="1FZ-dS-1V8" firstAttribute="leading" secondItem="Dng-vw-v7B" secondAttribute="leading" id="Kpf-Il-Sam"/>
+                            <constraint firstItem="qKg-oU-8Hb" firstAttribute="top" secondItem="Dng-vw-v7B" secondAttribute="top" id="Kuf-rC-r9S"/>
+                            <constraint firstAttribute="trailing" secondItem="1FZ-dS-1V8" secondAttribute="trailing" id="VgX-Ye-okR"/>
+                            <constraint firstItem="kvp-42-Cwe" firstAttribute="leading" secondItem="Dng-vw-v7B" secondAttribute="leading" constant="24" id="b9a-SH-nbe"/>
+                            <constraint firstItem="qKg-oU-8Hb" firstAttribute="leading" secondItem="Dng-vw-v7B" secondAttribute="leading" id="lRJ-MJ-pIk"/>
                             <constraint firstAttribute="trailing" secondItem="QGD-Xb-5fn" secondAttribute="trailing" constant="24" id="qwF-vk-TiN"/>
-                            <constraint firstItem="wxQ-gG-Stq" firstAttribute="top" secondItem="Dng-vw-v7B" secondAttribute="top" constant="12" id="s0n-qs-rrE"/>
+                            <constraint firstAttribute="bottom" secondItem="1FZ-dS-1V8" secondAttribute="bottom" id="vLL-n0-Uex"/>
+                            <constraint firstItem="kvp-42-Cwe" firstAttribute="top" secondItem="Dng-vw-v7B" secondAttribute="top" constant="12" id="yLk-jM-M8T"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -120,6 +133,9 @@
     <resources>
         <namedColor name="ListSeperatorColor">
             <color red="0.5607843137254902" green="0.59607843137254901" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainLabelColor">
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
