@@ -8,20 +8,24 @@
 import Foundation
 import Charts
 
-protocol DetailViewModelProtocol {
+protocol DetailViewModelProtocol: BaseViewModelProtocol {
     func requestChartData(_ completion: @escaping ([ChartDataEntry]) -> Void)
     func navigationBarTitle() -> String
 }
 
-final class DetailViewModel: DetailViewModelProtocol {
+final class DetailViewModel: BaseViewModel, DetailViewModelProtocol {
     // MARK: - Variables
-    private let dataProvider: ListViewDataProvidable
+    private let dataProvider: DetailViewDataProvidable
     private let symbol: String
     private let name: String
     
     // MARK: - Initialization
-    init(name: String, symbol: String, dataProvider: ListViewDataProvidable) {
-        self.dataProvider = dataProvider
+    init(name: String, symbol: String, dataProvider: DataProvidable) {
+        if let dataProvider = dataProvider as? DetailViewDataProvidable {
+            self.dataProvider = dataProvider
+        } else {
+            self.dataProvider = DataProvider()
+        }
         self.symbol = symbol
         self.name = name
     }
@@ -41,9 +45,7 @@ final class DetailViewModel: DetailViewModelProtocol {
                 let entries = self.parsed(chartData)
                 completion(entries)
             case .failure(let error):
-                #if DEBUG
-                print(APIError.apiError(error: error))
-                #endif
+                self.errorLogger.logError(APIError.apiError(error: error))
             }
         }
     }

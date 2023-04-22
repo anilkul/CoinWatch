@@ -11,7 +11,7 @@ protocol PersistencyManagerProtocol {
     func set<Value>(newValue: Value, for key: Keys)
     func value<Value>(for key: Keys, defaultValue: Value) -> Value
     func remove(_ key: Keys)
-    func encode<Value: Encodable>(newValue: Value, for key: Keys)
+    func encode<Value: Encodable>(newValue: Value, for key: Keys) throws
     func decode<Value: Decodable>(for key: Keys, defaultValue: Value) -> Value
 }
 
@@ -32,7 +32,6 @@ final class PersistencyManager: PersistencyManagerProtocol {
     }
 
     func set<Value>(newValue: Value, for key: Keys) {
-        
         if let optional = newValue as? AnyOptional, optional.isNil {
             storage.removeObject(forKey: key.rawValue)
         } else {
@@ -40,11 +39,11 @@ final class PersistencyManager: PersistencyManagerProtocol {
         }
     }
     
-    func encode<Value: Encodable>(newValue: Value, for key: Keys) {
+    func encode<Value: Encodable>(newValue: Value, for key: Keys) throws {
         let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(newValue) {
-            storage.set(encoded, forKey: key.rawValue)
-        }
+        
+        let encoded = try encoder.encode(newValue)
+        storage.set(encoded, forKey: key.rawValue)
     }
     
     func decode<Value: Decodable>(for key: Keys, defaultValue: Value) -> Value {
@@ -55,10 +54,6 @@ final class PersistencyManager: PersistencyManagerProtocol {
             }
         }
         return defaultValue
-    }
-
-    func hasKey(_ key: Keys) -> Bool {
-        return storage.object(forKey: key.rawValue) != nil
     }
 }
 

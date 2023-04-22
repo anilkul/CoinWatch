@@ -8,7 +8,7 @@
 import UIKit
 import Charts
 
-final class DetailViewController: UIViewController {
+final class DetailViewController: BaseViewController {
     // MARK: - Outlets
     @IBOutlet private weak var lineChartView: LineChartView!
     
@@ -28,16 +28,17 @@ final class DetailViewController: UIViewController {
         let yourBackImage = UIImage(systemName: "arrow.backward")
         navigationController?.navigationBar.backIndicatorImage = yourBackImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        navigationController?.navigationBar.topItem?.title = ""
+        navigationController?.navigationBar.topItem?.title = .empty
         navigationController?.navigationBar.tintColor = UIColor(named: "MainLabelColor")
     }
     
     private func fetchChart() {
+        showActivityIndicator()
         viewModel.requestChartData { [weak self] entries in
             guard let self else {
                 return
             }
-            
+            self.hideActivityIndicator()
             DispatchQueue.main.async {
                 self.setupChartView(data: entries)
             }

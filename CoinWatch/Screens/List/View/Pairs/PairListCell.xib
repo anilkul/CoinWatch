@@ -132,7 +132,7 @@
     </objects>
     <resources>
         <namedColor name="ListSeperatorColor">
-            <color red="0.5607843137254902" green="0.59607843137254901" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10588235294117647" green="0.13725490196078433" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainLabelColor">
             <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -28,9 +28,10 @@ final class PairListCell: UICollectionViewCell {
     // MARK: - UI Operations
     func populate(with presentationObject: PairPresentable) {
         self.presentationObject = presentationObject
-        favoriteButton.setTitle("", for: .normal)
-        let imageName = presentationObject.isFavorite ? "star.fill" : "star"
-        favoriteButton.setImage(UIImage(systemName: imageName), for: .normal)
+        favoriteButton.setTitle(.empty, for: .normal)
+        let tintColor: UIColor = presentationObject.isFavorite ? .systemOrange : .systemGray2
+        favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        favoriteButton.tintColor = tintColor
         pairNameLabel.text = presentationObject.name
         lastLabel.text = presentationObject.last
         dailyPercentageLabel.text = presentationObject.dailyPercent
@@ -51,9 +52,4 @@ final class PairListCell: UICollectionViewCell {
 
 protocol PairListCellDelegate: AnyObject {
     func didReceive(action: CellAction, presentationObject: PairPresentable)
-}
-
-enum CellAction {
-    case select
-    case favorite
 }

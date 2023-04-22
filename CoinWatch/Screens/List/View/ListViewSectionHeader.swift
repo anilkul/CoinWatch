@@ -8,7 +8,7 @@
 import UIKit
 
 class ListViewSectionHeader: UICollectionReusableView {
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,5 +1,5 @@
 //
-//  ListViewDataProvider.swift
+//  DataProvider.swift
 //  CoinWatch
 //
 //  Created by Anıl Kul on 19.04.2023.
@@ -8,14 +8,20 @@
 import Foundation
 import Alamofire
 
-protocol ListViewDataProvidable {
-    func requestPairs(_ completion: @escaping (APIResult<PairList>) -> Void)
-    func setfavorites(_ state: Bool, _ favoriteList: [FavoritePresentationObject], _ completion: VoidHandler?)
-    func fetchFavoriteList(fetchOffset: Int?) -> [FavoritePresentationObject]
+
+protocol DataProvidable {}
+
+protocol DetailViewDataProvidable: DataProvidable {
     func fetchChart(for symbol: String, _ completion: @escaping (APIResult<ChartDataModel>) -> Void)
 }
 
-final class ListViewDataProvider: ListViewDataProvidable {
+protocol ListViewDataProvidable: DataProvidable {
+    func requestPairs(_ completion: @escaping (APIResult<PairList>) -> Void)
+    func setfavorites(_ state: Bool, _ favoriteList: [FavoritePresentationObject], _ completion: VoidHandler?) throws
+    func fetchFavoriteList(fetchOffset: Int?) -> [FavoritePresentationObject]
+}
+
+final class DataProvider: ListViewDataProvidable, DetailViewDataProvidable {
     // MARK: - Variables
     private let networkManager: NetworkManagable
     private let persistencyManager: PersistencyManagerProtocol
@@ -32,13 +38,15 @@ final class ListViewDataProvider: ListViewDataProvidable {
         networkManager.request(apiMethod, response: completion)
     }
     
-    func setfavorites(_ state: Bool, _ favoriteList: [FavoritePresentationObject], _ completion: VoidHandler?) {
-        persistencyManager.encode(newValue: favoriteList, for: .favorites)
+    func setfavorites(_ state: Bool, _ favoriteList: [FavoritePresentationObject], _ completion: VoidHandler?) throws {
+        let favorites = favoriteList.map({ FavoriteStorableObject(favoritedPair: $0) })
+        try persistencyManager.encode(newValue: favorites, for: .favorites)
         completion?()
     }
     
     func fetchFavoriteList(fetchOffset: Int?) -> [FavoritePresentationObject] {
-        return persistencyManager.decode(for: .favorites, defaultValue: [])
+        let favorites = persistencyManager.decode(for: .favorites, defaultValue: []).map({ FavoritePresentationObject(storedObject: $0) })
+        return favorites
     }
     
     func fetchChart(for symbol: String, _ completion: @escaping (APIResult<ChartDataModel>) -> Void) {

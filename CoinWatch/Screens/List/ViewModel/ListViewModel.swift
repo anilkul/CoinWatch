@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ListViewModel: ListViewModelProtocol {
+final class ListViewModel: BaseViewModel, ListViewModelProtocol {
     // MARK: - Variables
     private let dataProvider: ListViewDataProvidable
     private var dataSource: [[BaseCellPresentable]] = []
@@ -33,9 +33,7 @@ final class ListViewModel: ListViewModelProtocol {
                     self?.reloadData?()
                 }
             case .failure(let error):
-                #if DEBUG
-                print(APIError.apiError(error: error))
-                #endif
+                self?.errorLogger.logError(APIError.apiError(error: error))
             }
         }
     }
@@ -44,7 +42,7 @@ final class ListViewModel: ListViewModelProtocol {
         let favorites: [PairFavoritable] = dataProvider.fetchFavoriteList(fetchOffset: nil)
         let favroteList: [FavoriteListPresentable] = [FavoriteListPresentationObject(type: .horizontal, favorites: favorites)]
         let pairList: [PairPresentable] = list.data.map {
-            let object = PairPresentationObject(type: .pair, pair: $0)
+            let object = PairPresentationObject(pair: $0)
             object.isFavorite = favorites.contains(where: { $0.symbol == object.symbol })
             return object
         }
@@ -58,18 +56,18 @@ final class ListViewModel: ListViewModelProtocol {
     }
     
     func numberOfItems(in section: Int) -> Int {
-        guard
-            section < dataSource.count
-        else {
+        guard section < dataSource.count else {
             return 0
         }
-        switch SectionType(rawValue: section) {
+        guard let sectionType = SectionType(rawValue: section) else {
+            errorLogger.logError(GeneralError.enumInitializationError(rawValue: section.description))
+            return 0
+        }
+        switch sectionType {
         case .favorites:
-            return dataSource[section].count
+            return isFavoritesSectionActive() ? dataSource[section].count : 0
         case .pairs:
             return treshold
-        case .none:
-            return 0
         }
     }
     
@@ -111,12 +109,12 @@ extension ListViewModel {
         case .favorite:
             presentationObject.isFavorite.toggle()
             guard
-                let favoritedPairObject = presentationObject as? FavoritePresentationObject,
                 let favoriteListObject = dataSource[SectionType.favorites.rawValue].first as? FavoriteListPresentable
             else {
+                errorLogger.logError(GeneralError.invalidCast)
                 return
             }
-            
+            let favoritedPairObject = FavoritePresentationObject(pair: presentationObject)
             if presentationObject.isFavorite {
                 favoriteListObject.favorites.append(favoritedPairObject)
             } else {
@@ -124,8 +122,14 @@ extension ListViewModel {
             }
             
             let newFavoriteList = favoriteListObject.favorites as? [FavoritePresentationObject] ?? []
-            dataProvider.setfavorites(presentationObject.isFavorite, newFavoriteList) { [weak self] in
-                self?.reloadData?()
+            do {
+                try dataProvider.setfavorites(presentationObject.isFavorite, newFavoriteList) { [weak self] in
+                    DispatchQueue.main.async {
+                        self?.reloadData?()
+                    }
+                }
+            } catch {
+                errorLogger.logError(error)
             }
         }
     }
@@ -140,14 +144,9 @@ extension ListViewModel {
         }
     }
     
+    // MARK: - Navigation
     private func navigateToDetail(for symbol: String, with name: String) {
         let viewModel = DetailViewModel(name: name, symbol: symbol, dataProvider: dataProvider)
         routingDelegate?.navigateToDetail(with: viewModel)
     }
-}
-
-typealias VoidHandler = () -> Void
-
-protocol DetailRoutingDelegate: AnyObject {
-    func navigateToDetail(with viewModel: DetailViewModelProtocol)
 }

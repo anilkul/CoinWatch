@@ -22,17 +22,13 @@
                                 <color key="backgroundColor" name="MainBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ydf-RM-2VZ">
                                     <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="50" height="60"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ListViewSectionHeader" id="RAg-45-Xig" customClass="ListViewSectionHeader" customModule="CoinWatch" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionReusableView>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="KgU-q8-Lwf"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tMC-Qb-C6N"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -63,7 +59,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpA-vq-AYg" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="127" width="390" height="130"/>
+                                <rect key="frame" x="10" y="127" width="370" height="130"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="fSL-iO-HmD"/>
@@ -74,8 +70,8 @@
                         <color key="backgroundColor" name="MainBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hpA-vq-AYg" firstAttribute="top" secondItem="dbx-s3-Ykj" secondAttribute="top" constant="80" id="VaX-yF-HzC"/>
-                            <constraint firstItem="hpA-vq-AYg" firstAttribute="leading" secondItem="dbx-s3-Ykj" secondAttribute="leading" id="dl5-KZ-RTS"/>
-                            <constraint firstItem="dbx-s3-Ykj" firstAttribute="trailing" secondItem="hpA-vq-AYg" secondAttribute="trailing" id="joO-fo-gvm"/>
+                            <constraint firstItem="hpA-vq-AYg" firstAttribute="leading" secondItem="dbx-s3-Ykj" secondAttribute="leading" constant="10" id="dl5-KZ-RTS"/>
+                            <constraint firstItem="dbx-s3-Ykj" firstAttribute="trailing" secondItem="hpA-vq-AYg" secondAttribute="trailing" constant="10" id="joO-fo-gvm"/>
                         </constraints>
                     </view>
                     <connections>

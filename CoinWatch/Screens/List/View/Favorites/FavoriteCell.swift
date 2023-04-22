@@ -36,7 +36,3 @@ final class FavoriteCell: UICollectionViewCell {
         delegate?.didReceive(action: .select, presentationObject: presentationObject)
     }
 }
-
-protocol FavoriteCellDelegate: AnyObject {
-    func didReceive(action: CellAction, presentationObject: PairFavoritable)
-}

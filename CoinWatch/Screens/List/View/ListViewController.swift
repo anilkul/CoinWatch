@@ -7,10 +7,13 @@
 
 import UIKit
 
-final class ListViewController: UIViewController {
+final class ListViewController: BaseViewController {
+    // MARK: - Outlets
+    @IBOutlet private weak var collectionView: UICollectionView!
+
     // MARK: - Variables
     private var viewModel: ListViewModelProtocol!
-    @IBOutlet weak var collectionView: UICollectionView!
+    private var activityIndicatorView = UIActivityIndicatorView()
     
     // MARK: - UI Lifecycle
     override func viewDidLoad() {
@@ -19,10 +22,12 @@ final class ListViewController: UIViewController {
         setupBindings()
         registerCollectionViewComponents()
         viewModel.routingDelegate = self
+        navigationController?.delegate = self
+        showActivityIndicator()
         viewModel.requestPairList { [weak self] in
             self?.collectionView.dataSource = self
+            self?.hideActivityIndicator()
         }
-        navigationController?.delegate = self
     }
     
     // MARK: - UI Operations
@@ -39,7 +44,7 @@ final class ListViewController: UIViewController {
     
     // MARK: - Setup View Model
     private func setupViewModel() {
-        let dataProvider: ListViewDataProvidable = ListViewDataProvider()
+        let dataProvider: ListViewDataProvidable = DataProvider()
         viewModel = ListViewModel(dataProvider: dataProvider)
     }
     
@@ -47,7 +52,7 @@ final class ListViewController: UIViewController {
         viewModel.reloadData = reloadData()
     }
     
-    func reloadData() -> VoidHandler {
+    private func reloadData() -> VoidHandler {
         return { [weak self] in
             guard let self = self else { return }
                 self.collectionView.reloadData()
@@ -67,7 +72,8 @@ extension ListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let sectionType = SectionType(rawValue: indexPath.section) else {
-            fatalError("Could not describe the section type")
+            viewModel.log(error: GeneralError.enumInitializationError(rawValue: String(indexPath.section)))
+            fatalError("Invalid enum")
         }
         switch sectionType {
         case .favorites:
@@ -75,7 +81,8 @@ extension ListViewController: UICollectionViewDataSource {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: FavoriteListHorizontalCell.self), for: indexPath) as? FavoriteListHorizontalCell,
                 let presentationObject = viewModel.presentationObject(at: indexPath) as? FavoriteListPresentable
             else {
-              fatalError()
+                viewModel.log(error: UIError.cellCouldNotBeCreated(className: String(describing: FavoriteListHorizontalCell.self)))
+                fatalError("Invalid cell")
             }
             cell.delegate = viewModel
             cell.populate(presentationObject: presentationObject)
@@ -85,7 +92,8 @@ extension ListViewController: UICollectionViewDataSource {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PairListCell.self), for: indexPath) as? PairListCell,
                 let presentationObject = viewModel.presentationObject(at: indexPath) as? PairPresentable
             else {
-              fatalError()
+                viewModel.log(error: UIError.cellCouldNotBeCreated(className: String(describing: PairListCell.self)))
+                fatalError("Invalid cell")
             }
             cell.delegate = viewModel
             cell.populate(with: presentationObject)
@@ -100,7 +108,7 @@ extension ListViewController: UICollectionViewDataSource {
           return UICollectionReusableView()
         }
         
-        sectionHeader.titleLabel.text = sectionType.title
+        sectionHeader.populate(with: sectionType.title)
         return sectionHeader
     }
     
@@ -122,19 +130,21 @@ extension ListViewController: UICollectionViewDataSource {
 extension ListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let sectionType = SectionType(rawValue: indexPath.section) else {
-            fatalError("Could not describe the section type")
+            viewModel.log(error: GeneralError.enumInitializationError(rawValue: String(indexPath.section)))
+            fatalError("Invalid enum")
         }
         
         switch sectionType {
         case .favorites:
-            if !viewModel.isFavoritesSectionActive() {
-                return .zero
+            guard viewModel.isFavoritesSectionActive() else {
+                // .zero causes problems while hiding an item that stands for a section.
+                return .negligibleSize
             }
             let presentationObject = viewModel.presentationObject(at: indexPath) as? FavoriteListPresentable
-            return presentationObject?.type.itemSize ?? .zero
+            return presentationObject?.type.itemSize ?? .negligibleSize
         case .pairs:
             let presentationObject = viewModel.presentationObject(at: indexPath) as? PairPresentable
-            return presentationObject?.type.itemSize ?? .zero
+            return presentationObject?.type.itemSize ?? .negligibleSize
         }
     }
     
@@ -156,9 +166,9 @@ extension ListViewController: DetailRoutingDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let identifier = String(describing: DetailViewController.self)
-        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: String(describing: DetailViewController.self)) as? DetailViewController else {
-//          fatalError(ErrorLogger.UIError.couldNotDefineController(identifier: identifier).errorMessage(methodName: "\(#function)", fileName: "\(#file)"))
-            fatalError()
+        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: identifier) as? DetailViewController else {
+            self.viewModel.log(error: UIError.couldNotDefineController(identifier: identifier))
+            fatalError("Invalid controller")
         }
         detailViewController.viewModel = viewModel
         navigationController?.pushViewController(detailViewController, animated: true)

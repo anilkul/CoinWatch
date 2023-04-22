@@ -5,11 +5,12 @@
 //  Created by Anıl Kul on 18.04.2023.
 //
 
-import Foundation
+import UIKit
+
+typealias VoidHandler = () -> Void
 
 struct Constants {
-    // URLs
-    struct URLs {
-      static let baseURL = "https://api.btcturk.com/"
+    static var screenWidth: CGFloat {
+        return UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.frame.width ?? UIScreen.main.bounds.width
     }
 }

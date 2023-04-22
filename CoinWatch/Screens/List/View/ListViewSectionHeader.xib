@@ -24,7 +24,6 @@
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
                 <constraint firstItem="7iL-tn-PjR" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="12" id="AUp-Eh-PBD"/>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="7iL-tn-PjR" secondAttribute="bottom" constant="20" id="YMn-Bq-PBn"/>
                 <constraint firstItem="7iL-tn-PjR" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="20" id="aKb-9W-a46"/>
             </constraints>
             <connections>
