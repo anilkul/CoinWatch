@@ -75,7 +75,14 @@ final class DetailViewController: BaseViewController {
         lineChartView.minOffset = 0
         lineChartView.legend.enabled = false
         lineChartView.backgroundColor = NSUIColor(named: "ChartBackgroundColor")!
-
         lineChartView.notifyDataSetChanged()
+        
+        let marker = BalloonMarker(color: NSUIColor(named: "ChartLineColor")!,
+                                   font: .systemFont(ofSize: 12),
+                                   textColor: NSUIColor(named: "MainLabelColor")!,
+                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
+        marker.chartView = lineChartView
+        marker.minimumSize = CGSize(width: 80, height: 40)
+        lineChartView.marker = marker
     }
 }
